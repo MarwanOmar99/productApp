@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="form-control w-50 d-flex my-2">
+      <input type="search" class="form-control" [(ngModel)]="SearchText" (input)="handelSearch()" />
+      <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        {{ catagery }}
+      </button>
+      <ul class="dropdown-menu dropdown-menu-lightd">
+        <li>
+          <a class="dropdown-item" (click)="catagery = 'Category'; filterData()">All Products</a>
+        </li>
+        @for (List of categoryList; track $index) {
+        <li>
+          <a class="dropdown-item" (click)="catagery = List; filterData()">{{ List }}</a>
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      @for (item of categoryList; track $index) {
+      <li class="breadcrumb-item" aria-current="page">
+        <a (click)="catagery = item; filterData()">{{ item }}</a>
+      </li>
+      }
+    </ol>
+  </nav>
+  <div class="row gy-5 my-3">
+    @for (product of data ; track $index) {
+    <div
+      class="Ani col-lg-3 col-md-6 col-sm-6 Action"
+      (mouseenter)="isHovered = $index"
+      (mouseleave)="isHovered = null"
+    >
+      <div class="card position-relative" style="width: 18rem">
+        <div class="position-absolute icon d-flex ms-3 mt-3 me-3 justify-content-between">
+          <a
+            class="animate__animated animate__faster"
+            (click)="handelIfIcon($index)"
+            [ngClass]="{
+              'd-block': isHovered === $index || product.cartAdd === true,
+              'none-dk': isHovered !== $index, 
+              animate__backInLeft: isHovered === $index ,
+            }"
+          >
+            @if (product.cartAdd === true) {
+            <i class="fa-solid fa-cart-shopping color"></i>
+            }@else {
+            <i class="fa-solid fa-cart-plus"></i>
+            }
+          </a>
+          <a
+            (click)="handelIconFavorite($index)"
+            class="animate__animated animate__faster"
+            [ngClass]="{
+              'd-block': isHovered === $index || product.Favorite == true,
+              'none-dk': isHovered !== $index,
+              animate__backInRight: isHovered === $index
+            }"
+          >
+            @if (product.Favorite === true) {
+            <i class="fa-solid fa-heart colorHeart"></i>
+            }@else{
+            <i class="fa-regular fa-heart"></i>
+            }
+          </a>
+          <a class="animate__animated d-none"><i class="fa-regular fa-star"></i></a>
+        </div>
+        <img
+          src="{{ product.thumbnail }}"
+          class="card-img-top animate__animated"
+          alt="..."
+          (mouseenter)="isHover = $index"
+          [ngClass]="{'cartAdd' : isHover === $index, animate__flipInX: isHover === $index ,
+            
+          }"
+        />
+        <div class="card-body">
+          <h5 class="card-title my-3">{{ product.title }}</h5>
+
+          <div class="d-flex justify-content-between">
+            <button href="#" class="btn btn-outline-primary fs-6" routerLink="{{ product.id }}">
+              more Info
+            </button>
+            <p class="card-text">$ {{ product.price }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

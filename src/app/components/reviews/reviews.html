@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row mb-4">
+    <h1>Review ({{ Data.reviews.length }})</h1>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <p>Reviwer Details</p>
+    </div>
+    <div class="col-8">
+      <p>Comment</p>
+    </div>
+  </div>
+  <hr />
+  @for (item of Data.reviews; track $index) {
+  <div class="row">
+    <div class="col-4">
+      <p>{{ item.reviewerName }}</p>
+      <p>{{ item.date }}</p>
+    </div>
+    <div class="col-8">
+      <p>{{ item.comment }}</p>
+    </div>
+  </div>
+  <hr />
+  }
+</div>

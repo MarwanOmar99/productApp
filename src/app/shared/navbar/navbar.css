@@ -1,0 +1,11 @@
+.color {
+  color: gold;
+  font-size: 20px;
+}
+.colorHeart {
+  color: red;
+  font-size: 20px !important;
+}
+.TextIcon {
+  left: 80%;
+}

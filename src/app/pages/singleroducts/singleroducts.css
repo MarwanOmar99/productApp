@@ -1,0 +1,11 @@
+.cursor :hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all 0.5s;
+}
+.cursor {
+  transition: all 10s;
+}
+.None-c {
+  display: none;
+}

@@ -1,0 +1,41 @@
+.Ani {
+  overflow: hidden;
+}
+.Action :hover .card {
+  transform: scale(1.1);
+  border-radius: 20px;
+  transition: all 0.5s ease-in-out;
+}
+.card-text {
+  font-size: 14px;
+}
+.icon i {
+  font-size: 20px;
+  transition: all 0.5s;
+}
+.position-absolute {
+  width: 80%;
+  right: -37%;
+  transform: translateX(-50%);
+}
+i:hover {
+  cursor: pointer;
+  transform: scale(1.3);
+}
+.mange :hover {
+  transform: scale(1.2);
+}
+.color {
+  color: gold;
+  font-size: 25px;
+}
+.colorHeart {
+  color: red;
+  font-size: 25px !important;
+}
+.none-dk {
+  visibility: hidden;
+}
+.cartAdd {
+  transform: scale(1.2);
+}
