@@ -14,9 +14,10 @@ import { Cards } from './components/cards/cards';
 import { Carts } from './pages/carts/carts';
 import { Favorite } from './pages/favorite/favorite';
 import { Reviews } from './components/reviews/reviews';
+import { Login } from './pages/login/login';
 
 @NgModule({
-  declarations: [App, Navbar, Posts, Products, Index, Singleroducts, Cards, Carts, Favorite, Reviews],
+  declarations: [App, Navbar, Posts, Products, Index, Singleroducts, Cards, Carts, Favorite, Reviews, Login],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],
