@@ -17,15 +17,7 @@
       </ul>
     </div>
   </div>
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      @for (item of categoryList; track $index) {
-      <li class="breadcrumb-item" aria-current="page">
-        <a (click)="catagery = item; filterData()">{{ item }}</a>
-      </li>
-      }
-    </ol>
-  </nav>
+
   <div class="row gy-5 my-3">
     @for (product of data ; track $index) {
     <div
