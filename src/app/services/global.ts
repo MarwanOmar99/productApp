@@ -21,4 +21,7 @@ export class Global {
   getSingleProducts(id: any): Observable<any> {
     return this.http.get(`https://dummyjson.com/products/${id}`);
   }
+  postRegisterData(Model: any): Observable<any> {
+    return this.http.post(`https://full.faedg.com/public/api/client/customer_register`, Model);
+  }
 }

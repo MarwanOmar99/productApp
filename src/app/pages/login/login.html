@@ -1,1 +1,98 @@
-<p>login works!</p>
+<div class="container my-5">
+  <form
+    class="row gy-3 justify-content-center"
+    #LoginForm="ngForm"
+    (submit)="handelsubmit(LoginForm)"
+  >
+    <div class="col-12 col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        name="userName"
+        placeholder="Enter Your Name"
+        [(ngModel)]="model.userName"
+        #userName="ngModel"
+        required
+        minlength="5"
+      />
+      @if (userName.dirty || LoginForm.submitted) { @if (userName.errors?.['required']) {
+      <div class="alert alert-danger w-auto">
+        <p>Its Required</p>
+      </div>
+      }@if (userName.errors?.['minlength']) {
+      <div class="alert alert-danger w-auto">
+        <p>Its minlength</p>
+      </div>
+      } }
+    </div>
+    <div class="col-12 col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Your Email"
+        name="userEmail"
+        [(ngModel)]="model.userEmail"
+        #userEmail="ngModel"
+        email
+        required
+      />
+      @if (userEmail.dirty || LoginForm.submitted) { @if (userEmail.errors?.['required']) {
+      <div class="alert alert-danger w-auto">
+        <p>Its Required</p>
+      </div>
+      }@if (userEmail.errors?.['email']) {
+      <div class="alert alert-danger w-auto">
+        <p>Email Format is wrong</p>
+      </div>
+      } }
+    </div>
+    <div class="col-12 col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Password"
+        name="userPassword"
+        [(ngModel)]="model.userPassword"
+        #userPassword="ngModel"
+        required
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+      />
+      @if (userPassword.dirty || LoginForm.submitted) { @if (userPassword.errors?.['required']) {
+      <div class="alert alert-danger w-auto">
+        <p>Its Required</p>
+      </div>
+      }@if (userPassword.errors?.['pattern']) {
+      <div class="alert alert-danger w-auto">
+        <p>
+          password" that must contain 8 or more characters that are of at least one number, and one
+          uppercase and lowercase lette
+        </p>
+      </div>
+      } }
+    </div>
+    <div class="col-12 col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter confirm Password"
+        name="confirmPassword"
+        [(ngModel)]="model.confirmPassword"
+        #confirmPassword="ngModel"
+        required
+      />
+      @if (confirmPassword.dirty || LoginForm.submitted) { @if
+      (confirmPassword.errors?.['required']) {
+      <div class="alert alert-danger w-auto">
+        <p>Its Required</p>
+      </div>
+      }@if (!handelConfirmPassword()) {
+      <div class="alert alert-danger w-auto">
+        <p>not the same please confirm your password again</p>
+      </div>
+      } }
+    </div>
+    <div class="col-4 col-md-6">
+      <button class="btn btn-outline-primary form-control">Login</button>
+    </div>
+  </form>
+</div>

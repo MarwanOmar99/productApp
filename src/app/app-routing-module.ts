@@ -7,6 +7,7 @@ import { Singleroducts } from './pages/singleroducts/singleroducts';
 import { Carts } from './pages/carts/carts';
 import { Favorite } from './pages/favorite/favorite';
 import { Login } from './pages/login/login';
+import { Register } from './pages/register/register';
 
 const routes: Routes = [
   { path: '', component: Index },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'carts', component: Carts },
   { path: 'favorite', component: Favorite },
   { path: 'login', component: Login },
+  { path: 'register', component: Register },
 ];
 
 @NgModule({

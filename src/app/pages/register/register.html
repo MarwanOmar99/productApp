@@ -1,0 +1,162 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-4">
+      <p class="">Register User</p>
+      <form #RegisterForm="ngForm" class="form-control my-5">
+        <div class="mb-4 mt-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter First Name"
+            name="FirstName"
+            [(ngModel)]="Model.FirstName"
+            #FirstName="ngModel"
+            required
+          />
+          @if (FirstName.dirty && FirstName.invalid) {
+          <div class="alert alert-danger py-0">
+            @if (FirstName.errors?.['required']) {
+            <p>Its Required</p>
+            }
+          </div>
+          } @if(FirstName.valid){
+          <div class="alert alert-success py-0">
+            <p>Done</p>
+          </div>
+          }
+        </div>
+        <div class="mb-4">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Last Name"
+            name="LastName"
+            [(ngModel)]="Model.LastName"
+            #LastName="ngModel"
+            required
+          />
+          @if (LastName.dirty && LastName.invalid) {
+          <div class="alert alert-danger py-0">
+            @if (LastName.errors?.['required']) {
+            <p>Its Required</p>
+            }
+          </div>
+          } @if(LastName.valid){
+          <div class="alert alert-success py-0">
+            <p>Done</p>
+          </div>
+          }
+        </div>
+        <div class="mb-4">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Your Phone Number"
+            name="PhoneNumber"
+            [(ngModel)]="Model.PhoneNumber"
+            #PhoneNumber="ngModel"
+            required
+            pattern="[0-9]"
+          />
+          @if (PhoneNumber.dirty && PhoneNumber.invalid) {
+          <div class="alert alert-danger py-0">
+            @if (PhoneNumber.errors?.['required']) {
+            <p>Its Required</p>
+            } @if (PhoneNumber.errors?.['pattern']) {
+            <p>just Number</p>
+            }
+          </div>
+          } @if(PhoneNumber.valid){
+          <div class="alert alert-success py-0">
+            <p>Done</p>
+          </div>
+          }
+        </div>
+        <div class="mb-4">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Your Email"
+            name="Email"
+            [(ngModel)]="Model.Email"
+            #Email="ngModel"
+            required
+            email
+          />
+          @if (Email.dirty && Email.invalid) {
+          <div class="alert alert-danger py-0">
+            @if (Email.errors?.['required']) {
+            <p>Its Required</p>
+            } @if (Email.errors?.['email']) {
+            <p>Email Format its nor correct</p>
+            }
+          </div>
+          } @if(Email.valid){
+          <div class="alert alert-success py-0">
+            <p>Done</p>
+          </div>
+          }
+        </div>
+        <div class="mb-4">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Your Password"
+            name="Password"
+            [(ngModel)]="Model.Password"
+            #Password="ngModel"
+            required
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          />
+          @if (Password.dirty && Password.invalid) {
+          <div class="alert alert-danger py-0">
+            @if (Password.errors?.['required']) {
+            <p>Its Required</p>
+            } @if (Password.errors?.['pattern']) {
+            <p class="fs-6">
+              Must contain at least one number, one uppercase letter, one lowercase letter, and at
+              least 8 or more characters.
+            </p>
+            }
+          </div>
+          } @if(Password.valid){
+          <div class="alert alert-success py-0">
+            <p>Done</p>
+          </div>
+          }
+        </div>
+        <div class="mb-4">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Confirm Password"
+            name="confirmPassword"
+            [(ngModel)]="Model.confirmPassword"
+            #confirmPassword="ngModel"
+            required
+          />
+          @if (confirmPassword.dirty && confirmPassword.invalid) {
+          <div class="alert alert-danger py-0">
+            @if (confirmPassword.errors?.['required']) {
+            <p>Its Required</p>
+            }
+          </div>
+          } @if (confirmPassword.dirty && !handelConfirmPassword()) {
+          <div class="alert alert-danger py-0">
+            <p class="fs-6">Must Be Same Password</p>
+          </div>
+          } @if(handelConfirmPassword()){
+          <div class="alert alert-success py-0">
+            <p>Done</p>
+          </div>
+          }
+        </div>
+        <div class="mb-4 d-flex justify-content-center">
+          <button class="btn btn-outline-primary" (click)="handelSubmit(RegisterForm)">
+            Register
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
