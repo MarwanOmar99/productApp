@@ -16,10 +16,24 @@ import { Favorite } from './pages/favorite/favorite';
 import { Reviews } from './components/reviews/reviews';
 import { Login } from './pages/login/login';
 import { Register } from './pages/register/register';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  declarations: [App, Navbar, Posts, Products, Index, Singleroducts, Cards, Carts, Favorite, Reviews, Login, Register],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  declarations: [
+    App,
+    Navbar,
+    Posts,
+    Products,
+    Index,
+    Singleroducts,
+    Cards,
+    Carts,
+    Favorite,
+    Reviews,
+    Login,
+    Register,
+  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ToastrModule.forRoot()],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],
 })

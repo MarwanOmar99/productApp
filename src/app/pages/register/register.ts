@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Global } from '../../services/global';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,7 @@ export class Register {
     Password: null,
     confirmPassword: null,
   };
-  constructor(private global: Global) {}
+  constructor(private global: Global, private toaster: ToastrService) {}
   handelSubmit(FormRegitser: NgForm) {
     if (FormRegitser.valid && this.handelConfirmPassword()) {
       this.global.postRegisterData(this.Model).subscribe({
