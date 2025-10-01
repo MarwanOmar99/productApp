@@ -1,32 +1,44 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="form-control w-50 d-flex my-2">
-      <input type="search" class="form-control" [(ngModel)]="SearchText" (input)="handelSearch()" />
-      <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        {{ catagery }}
-      </button>
-      <ul class="dropdown-menu dropdown-menu-lightd">
-        <li>
-          <a class="dropdown-item" (click)="catagery = 'Category'; filterData()">All Products</a>
-        </li>
-        @for (List of categoryList; track $index) {
-        <li>
-          <a class="dropdown-item" (click)="catagery = List; filterData()">{{ List }}</a>
-        </li>
-        }
-      </ul>
+    <div class="col-lg-6 col-12">
+      <div class="form-control w-100 d-flex my-2">
+        <input
+          type="search"
+          class="form-control w-100"
+          [(ngModel)]="SearchText"
+          (input)="handelSearch()"
+          placeholder="search"
+        />
+        <button
+          class="btn btn-dark dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          {{ catagery }}
+        </button>
+        <ul class="dropdown-menu dropdown-menu-lightd">
+          <li>
+            <a class="dropdown-item" (click)="catagery = 'Category'; filterData()">All Products</a>
+          </li>
+          @for (List of categoryList; track $index) {
+          <li>
+            <a class="dropdown-item" (click)="catagery = List; filterData()">{{ List }}</a>
+          </li>
+          }
+        </ul>
+      </div>
     </div>
   </div>
 
-  <div class="row gy-5 my-3">
+  <div class="row gy-5 my-3 justify-content-center">
     @for (product of data ; track $index) {
     <div
-      class="Ani col-12 col-lg-3 col-md-6 col-sm-6 Action"
+      class="Ani col-4 col-lg-2 col-md-3 Action"
       (mouseenter)="isHovered = $index"
       (mouseleave)="isHovered = null"
       (click)="handelNavigate(product.id)"
     >
-      <div class="card cardsColor position-relative position-relative" style="width: 18rem">
+      <div class="card cardsColor position-relative position-relative">
         <img
           src="{{ product.thumbnail }}"
           class="card-img-top animate__animated"
@@ -45,7 +57,7 @@
             }"
         >
           <div class="d-flex justify-content-between">
-            <p class="card-title my-3 itle-INFO w-50">{{ product.title }}</p>
+            <p class="card-title my-3 itle-INFO w-100">{{ product.title }}</p>
           </div>
         </div>
       </div>
