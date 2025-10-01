@@ -24,41 +24,9 @@
       class="Ani col-12 col-lg-3 col-md-6 col-sm-6 Action"
       (mouseenter)="isHovered = $index"
       (mouseleave)="isHovered = null"
+      (click)="handelNavigate(product.id)"
     >
-      <div class="card position-relative" style="width: 18rem">
-        <div class="position-absolute icon d-flex ms-3 mt-3 me-3 justify-content-between">
-          <a
-            class="animate__animated animate__faster"
-            (click)="handelIfIcon($index)"
-            [ngClass]="{
-              'd-block': isHovered === $index || product.cartAdd === true,
-              'none-dk': isHovered !== $index, 
-              animate__backInLeft: isHovered === $index ,
-            }"
-          >
-            @if (product.cartAdd === true) {
-            <i class="fa-solid fa-cart-shopping color"></i>
-            }@else {
-            <i class="fa-solid fa-cart-plus"></i>
-            }
-          </a>
-          <a
-            (click)="handelIconFavorite($index)"
-            class="animate__animated animate__faster"
-            [ngClass]="{
-              'd-block': isHovered === $index || product.Favorite == true,
-              'none-dk': isHovered !== $index,
-              animate__backInRight: isHovered === $index
-            }"
-          >
-            @if (product.Favorite === true) {
-            <i class="fa-solid fa-heart colorHeart"></i>
-            }@else{
-            <i class="fa-regular fa-heart"></i>
-            }
-          </a>
-          <a class="animate__animated d-none"><i class="fa-regular fa-star"></i></a>
-        </div>
+      <div class="card cardsColor position-relative position-relative" style="width: 18rem">
         <img
           src="{{ product.thumbnail }}"
           class="card-img-top animate__animated"
@@ -68,14 +36,16 @@
             
           }"
         />
-        <div class="card-body">
-          <h5 class="card-title my-3">{{ product.title }}</h5>
-
+        <div
+          class="card-body position-absolute titles animate__animated m-0"
+          [ngClass]="{
+              'd-block': isHovered === $index ,
+              'none-dk': isHovered !== $index, 
+              animate__slideInUp: isHovered === $index ,
+            }"
+        >
           <div class="d-flex justify-content-between">
-            <button href="#" class="btn btn-outline-primary fs-6" routerLink="{{ product.id }}">
-              more Info
-            </button>
-            <p class="card-text">$ {{ product.price }}</p>
+            <p class="card-title my-3 itle-INFO w-50">{{ product.title }}</p>
           </div>
         </div>
       </div>

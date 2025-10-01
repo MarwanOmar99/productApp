@@ -1,0 +1,33 @@
+<div class="position-absolute icon d-flex ms-3 mt-3 me-3 justify-content-between">
+          <a
+            class="animate__animated animate__faster"
+            (click)="handelIfIcon($index)"
+            [ngClass]="{
+              'd-block': isHovered === $index || product.cartAdd === true,
+              'none-dk': isHovered !== $index, 
+              animate__backInLeft: isHovered === $index ,
+            }"
+          >
+            @if (product.cartAdd === true) {
+            <i class="fa-solid fa-cart-shopping color"></i>
+            }@else {
+            <i class="fa-solid fa-cart-plus"></i>
+            }
+          </a>
+          <a
+            (click)="handelIconFavorite($index)"
+            class="animate__animated animate__faster"
+            [ngClass]="{
+              'd-block': isHovered === $index || product.Favorite == true,
+              'none-dk': isHovered !== $index,
+              animate__backInRight: isHovered === $index
+            }"
+          >
+            @if (product.Favorite === true) {
+            <i class="fa-solid fa-heart colorHeart"></i>
+            }@else{
+            <i class="fa-regular fa-heart"></i>
+            }
+          </a>
+          <a class="animate__animated d-none"><i class="fa-regular fa-star"></i></a>
+        </div>

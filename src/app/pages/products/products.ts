@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Global } from '../../services/global';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -15,7 +16,7 @@ export class Products {
   catagery = 'Category';
   categoryList: any = [];
   SearchText: string = '';
-  constructor(private global: Global) {}
+  constructor(private global: Global, private route: Router) {}
   ngOnInit() {
     this.global.getPosts().subscribe({
       next: (res) => {
@@ -70,5 +71,8 @@ export class Products {
       return item.title.toLowerCase().includes(this.SearchText.toLowerCase());
     });
     console.log(this.data);
+  }
+  handelNavigate(id: number) {
+    this.route.navigate(['products/' + id]);
   }
 }
