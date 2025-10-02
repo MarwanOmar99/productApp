@@ -11,12 +11,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class Register {
   Model = {
-    FirstName: null,
-    LastName: null,
-    PhoneNumber: null,
-    Email: null,
-    Password: null,
-    confirmPassword: null,
+    first_name: null,
+    last_name: null,
+    phone: null,
+    email: null,
+    password: null,
+    confirm_password: null,
   };
   constructor(private global: Global, private toaster: ToastrService) {}
   handelSubmit(FormRegitser: NgForm) {
@@ -34,9 +34,9 @@ export class Register {
     }
   }
   handelConfirmPassword(): boolean {
-    if (!this.Model.Password || !this.Model.confirmPassword) {
+    if (!this.Model.password || !this.Model.confirm_password) {
       return false;
     }
-    return this.Model.Password === this.Model.confirmPassword;
+    return this.Model.password === this.Model.confirm_password;
   }
 }

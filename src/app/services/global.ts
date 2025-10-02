@@ -24,4 +24,7 @@ export class Global {
   postRegisterData(Model: any): Observable<any> {
     return this.http.post(`https://full.faedg.com/public/api/client/customer_register`, Model);
   }
+  postLogin(model: any): Observable<any> {
+    return this.http.post('https://full.faedg.com/public/api/client/customer_login', model);
+  }
 }

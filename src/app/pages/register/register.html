@@ -9,7 +9,7 @@
             class="form-control"
             placeholder="Enter First Name"
             name="FirstName"
-            [(ngModel)]="Model.FirstName"
+            [(ngModel)]="Model.first_name"
             #FirstName="ngModel"
             required
           />
@@ -31,7 +31,7 @@
             class="form-control"
             placeholder="Enter Last Name"
             name="LastName"
-            [(ngModel)]="Model.LastName"
+            [(ngModel)]="Model.last_name"
             #LastName="ngModel"
             required
           />
@@ -53,7 +53,7 @@
             class="form-control"
             placeholder="Enter Your Phone Number"
             name="PhoneNumber"
-            [(ngModel)]="Model.PhoneNumber"
+            [(ngModel)]="Model.phone"
             #PhoneNumber="ngModel"
             required
             pattern="[0-9]"
@@ -78,7 +78,7 @@
             class="form-control"
             placeholder="Enter Your Email"
             name="Email"
-            [(ngModel)]="Model.Email"
+            [(ngModel)]="Model.email"
             #Email="ngModel"
             required
             email
@@ -103,7 +103,7 @@
             class="form-control"
             placeholder="Enter Your Password"
             name="Password"
-            [(ngModel)]="Model.Password"
+            [(ngModel)]="Model.password"
             #Password="ngModel"
             required
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
@@ -131,7 +131,7 @@
             class="form-control"
             placeholder="Confirm Password"
             name="confirmPassword"
-            [(ngModel)]="Model.confirmPassword"
+            [(ngModel)]="Model.confirm_password"
             #confirmPassword="ngModel"
             required
           />

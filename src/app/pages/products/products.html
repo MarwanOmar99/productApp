@@ -29,11 +29,19 @@
       </div>
     </div>
   </div>
-
+  <div
+    class="w-100 justify-content-center h-100 align-items-center load"
+    [ngClass]="{
+      'd-flex': LoadAllData === false,
+      'd-none': LoadAllData === true
+    }"
+  >
+    <span class="loader"></span>
+  </div>
   <div class="row gy-5 my-3 justify-content-center">
     @for (product of data ; track $index) {
     <div
-      class="Ani col-4 col-lg-2 col-md-3 Action"
+      class="Ani col-12 col-lg-2 col-md-3 Action"
       (mouseenter)="isHovered = $index"
       (mouseleave)="isHovered = null"
       (click)="handelNavigate(product.id)"

@@ -16,6 +16,7 @@ export class Products {
   catagery = 'Category';
   categoryList: any = [];
   SearchText: string = '';
+  LoadAllData: boolean = false;
   constructor(private global: Global, private route: Router) {}
   ngOnInit() {
     this.global.getPosts().subscribe({
@@ -30,7 +31,9 @@ export class Products {
       error: (err) => {
         console.log(err);
       },
-      complete: () => {},
+      complete: () => {
+        this.LoadAllData = true;
+      },
     });
   }
   handelIfIcon(index: number) {
