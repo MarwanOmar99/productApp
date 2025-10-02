@@ -7,7 +7,7 @@ import { Navbar } from './shared/navbar/navbar';
 import { Posts } from './pages/posts/posts';
 import { Products } from './pages/products/products';
 import { Index } from './pages/index/index';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { Singleroducts } from './pages/singleroducts/singleroducts';
 import { FormsModule } from '@angular/forms';
 import { Cards } from './components/cards/cards';
@@ -17,6 +17,8 @@ import { Reviews } from './components/reviews/reviews';
 import { Login } from './pages/login/login';
 import { Register } from './pages/register/register';
 import { ToastrModule } from 'ngx-toastr';
+import { Profile } from './pages/profile/profile';
+import { authInterceptor } from './interceptor/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -32,9 +34,13 @@ import { ToastrModule } from 'ngx-toastr';
     Reviews,
     Login,
     Register,
+    Profile,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ToastrModule.forRoot()],
-  providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideHttpClient(withInterceptors([authInterceptor])),
+  ],
   bootstrap: [App],
 })
 export class AppModule {}

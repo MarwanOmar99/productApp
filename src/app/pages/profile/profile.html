@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-4">
+      <h3 class="">Update Date</h3>
+      <form #RegisterForm="ngForm" class="form-control my-5">
+        <div class="mb-4 mt-2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter First Name"
+            name="FirstName"
+            [(ngModel)]="Model.first_name"
+            #FirstName="ngModel"
+            required
+          />
+          @if (FirstName.dirty && FirstName.invalid) {
+          <div class="alert alert-danger py-0">
+            @if (FirstName.errors?.['required']) {
+            <p>Its Required</p>
+            }
+          </div>
+          } @if(FirstName.valid){
+          <div class="alert alert-success py-0">
+            <p>Done</p>
+          </div>
+          }
+        </div>
+        <div class="mb-4">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Last Name"
+            name="LastName"
+            [(ngModel)]="Model.last_name"
+            #LastName="ngModel"
+            required
+          />
+          @if (LastName.dirty && LastName.invalid) {
+          <div class="alert alert-danger py-0">
+            @if (LastName.errors?.['required']) {
+            <p>Its Required</p>
+            }
+          </div>
+          } @if(LastName.valid){
+          <div class="alert alert-success py-0">
+            <p>Done</p>
+          </div>
+          }
+        </div>
+        <div class="mb-4">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Your Phone Number"
+            name="PhoneNumber"
+            [(ngModel)]="Model.phone"
+            #PhoneNumber="ngModel"
+            required
+            pattern="[0-9]"
+          />
+          @if (PhoneNumber.dirty && PhoneNumber.invalid) {
+          <div class="alert alert-danger py-0">
+            @if (PhoneNumber.errors?.['required']) {
+            <p>Its Required</p>
+            } @if (PhoneNumber.errors?.['pattern']) {
+            <p>just Number</p>
+            }
+          </div>
+          } @if(PhoneNumber.valid){
+          <div class="alert alert-success py-0">
+            <p>Done</p>
+          </div>
+          }
+        </div>
+        <div class="mb-4">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Your Email"
+            name="Email"
+            [(ngModel)]="Model.email"
+            #Email="ngModel"
+            required
+            email
+          />
+          @if (Email.dirty && Email.invalid) {
+          <div class="alert alert-danger py-0">
+            @if (Email.errors?.['required']) {
+            <p>Its Required</p>
+            } @if (Email.errors?.['email']) {
+            <p>Email Format its nor correct</p>
+            }
+          </div>
+          } @if(Email.valid){
+          <div class="alert alert-success py-0">
+            <p>Done</p>
+          </div>
+          }
+        </div>
+        <button class="form-control btn btn-primary" (click)="handelSubmit(RegisterForm)">
+          Update
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

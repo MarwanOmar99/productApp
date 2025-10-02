@@ -9,6 +9,10 @@ export class Global {
   constructor(private http: HttpClient) {}
   data: any[] = [];
   dataCart: any[] = [];
+  isLogin = false;
+  isLogIn = localStorage.getItem('token') ? true : false;
+  userName = null;
+  userID = null;
   get NumIcon(): number {
     return this.data.length;
   }
@@ -16,7 +20,7 @@ export class Global {
     return this.dataCart.length;
   }
   getPosts(): Observable<any> {
-    return this.http.get('https://dummyjson.com/products?limit=194');
+    return this.http.get('https://dummyjson.com/products?limit=19');
   }
   getSingleProducts(id: any): Observable<any> {
     return this.http.get(`https://dummyjson.com/products/${id}`);
@@ -26,5 +30,14 @@ export class Global {
   }
   postLogin(model: any): Observable<any> {
     return this.http.post('https://full.faedg.com/public/api/client/customer_login', model);
+  }
+  getProfile(): Observable<any> {
+    return this.http.get('https://full.faedg.com/public/api/client/profile');
+  }
+  upDateInfo(modelEdited: any): Observable<any> {
+    return this.http.put(
+      `https://full.faedg.com/public/api/client/profile/${this.userID}`,
+      modelEdited
+    );
   }
 }

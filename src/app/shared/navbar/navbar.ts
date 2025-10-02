@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Global } from '../../services/global';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -15,12 +16,17 @@ export class Navbar {
   get NumCart(): Number {
     return this.global.NumIconHeart;
   }
-  constructor(private global: Global) {}
+  constructor(public global: Global, private route: Router) {}
   ngOnInit() {
     this.Icon = this.global.data;
     console.log(this.Icon);
   }
   handelTest() {
     console.log(this.NumIcon);
+  }
+  handelLogout() {
+    localStorage.removeItem('token');
+    this.global.isLogIn = false;
+    this.route.navigateByUrl('/login');
   }
 }

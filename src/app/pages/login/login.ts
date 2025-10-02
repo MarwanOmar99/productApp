@@ -20,14 +20,19 @@ export class Login {
   handelsubmit(form: NgForm) {
     if (form.valid) {
       this.startLogin = true;
+
       this.global.postLogin(this.model).subscribe({
         next: (res) => {
           localStorage.setItem('token', res.data.token);
-          console.log(localStorage.getItem('token'));
+          console.log(res);
+          this.toaster.success('welcome Login Succes');
           this.route.navigateByUrl('/');
+          this.global.isLogIn = true;
+          this.global.userName = res.data.first_name;
         },
         error: (err) => {
           console.log(err);
+          this.startLogin = false;
           this.toaster.error('Login filed');
         },
       });
