@@ -31,7 +31,8 @@ export class Profile {
     if (FormRegitser.valid) {
       this.global.upDateInfo(this.Model).subscribe({
         next: (res) => {
-          console.log(res);
+          this.global.userName = res.data.customer_first_name;
+          this.toaster.success('updated');
         },
         error: (error) => {
           console.log(error);

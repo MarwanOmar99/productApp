@@ -19,6 +19,7 @@ import { Register } from './pages/register/register';
 import { ToastrModule } from 'ngx-toastr';
 import { Profile } from './pages/profile/profile';
 import { authInterceptor } from './interceptor/auth-interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,13 @@ import { authInterceptor } from './interceptor/auth-interceptor';
     Register,
     Profile,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ToastrModule.forRoot()],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+  ],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(withInterceptors([authInterceptor])),

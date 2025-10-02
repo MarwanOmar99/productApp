@@ -13,6 +13,7 @@ export class Global {
   isLogIn = localStorage.getItem('token') ? true : false;
   userName = null;
   userID = null;
+  edit = false;
   get NumIcon(): number {
     return this.data.length;
   }

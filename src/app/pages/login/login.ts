@@ -31,9 +31,9 @@ export class Login {
           this.global.userName = res.data.first_name;
         },
         error: (err) => {
-          console.log(err);
+          console.log(err.error.message);
           this.startLogin = false;
-          this.toaster.error('Login filed');
+          this.toaster.error(err.error.message);
         },
       });
     }
