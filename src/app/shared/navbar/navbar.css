@@ -9,3 +9,6 @@
 .TextIcon {
   left: 80%;
 }
+a:hover {
+  cursor: pointer;
+}

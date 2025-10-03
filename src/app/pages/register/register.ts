@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Global } from '../../services/global';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -18,12 +19,13 @@ export class Register {
     password: null,
     confirm_password: null,
   };
-  constructor(private global: Global, private toaster: ToastrService) {}
+  constructor(private global: Global, private toaster: ToastrService, private route: Router) {}
   handelSubmit(FormRegitser: NgForm) {
     if (FormRegitser.valid && this.handelConfirmPassword()) {
       this.global.postRegisterData(this.Model).subscribe({
         next: (res) => {
-          console.log(res);
+          this.route.navigateByUrl('/login');
+          this.toaster.success('wellcome : register done');
         },
         error: (error) => {
           console.log(error);

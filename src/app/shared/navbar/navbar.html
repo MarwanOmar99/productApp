@@ -19,6 +19,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
         </li>
+        @if (global.isLogIn) {
         <li class="nav-item">
           <a class="nav-link" routerLink="/products">Products</a>
         </li>
@@ -34,7 +35,7 @@
             ><i class="fa-solid fa-heart colorHeart"></i
           ></a>
         </li>
-        @if (global.isLogIn) {
+        } @if (global.isLogIn) {
         <li class="nav-item ms-3">
           <a class="nav-link" routerLink="/profile"> {{ global.userName }}</a>
         </li>

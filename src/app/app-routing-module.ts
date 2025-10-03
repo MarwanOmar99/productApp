@@ -9,17 +9,18 @@ import { Favorite } from './pages/favorite/favorite';
 import { Login } from './pages/login/login';
 import { Register } from './pages/register/register';
 import { Profile } from './pages/profile/profile';
+import { authenticateGuard } from './core/guards/authenticate-guard';
 
 const routes: Routes = [
   { path: '', component: Index },
-  { path: 'posts', component: Posts },
-  { path: 'products', component: Products },
-  { path: 'products/:id', component: Singleroducts },
-  { path: 'carts', component: Carts },
-  { path: 'favorite', component: Favorite },
+  { path: 'posts', component: Posts, canActivate: [authenticateGuard] },
+  { path: 'products', component: Products, canActivate: [authenticateGuard] },
+  { path: 'products/:id', component: Singleroducts, canActivate: [authenticateGuard] },
+  { path: 'carts', component: Carts, canActivate: [authenticateGuard] },
+  { path: 'favorite', component: Favorite, canActivate: [authenticateGuard] },
   { path: 'login', component: Login },
   { path: 'register', component: Register },
-  { path: 'profile', component: Profile },
+  { path: 'profile', component: Profile, canActivate: [authenticateGuard] },
 ];
 
 @NgModule({
